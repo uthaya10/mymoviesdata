@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="/public/css/style.css">
+    <style>
+        .container{
+            width: 50%;
+        }
+        .jumbotron{
+            background-image: url("https://image.freepik.com/free-vector/showtime-cinema-background-with-film-strip-reel_1017-26098.jpg");
+            color: white;
+            background-position: center;
+        }
+        .jumbotron h1{
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+    <div class="jumbotron jumbotron-fluid">
+        <div class="container">
+          <h1 class="display-4">Movie Collections</h1>
+          <p class="lead">It's not what a movie is about, it's how it is about it.</p>
+        </div>
+    </div>
+    <div class="container">
+        <div class="form mt-5">
+            <h3 class="mb-3">Enter the movie name :</h3> 
+            <form action="/results" method="GET">
+                <input class="form-control mb-2 mr-sm-2" type="text" name="name">
+                <button class="btn btn-dark" type="submit">Search</button>
+            </form>
+        </div>
+        <br>
+    </div>
+</body>
+</html>

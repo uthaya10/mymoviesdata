@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/style.css">
+    <link href='https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css' rel='stylesheet'>
+    <title>Results</title>
+    <style>
+        #myBtn{
+            font-size: 50px;
+            color: black;
+            display: none;
+            position: fixed;
+            bottom: 20px;
+            right: 30px;
+            cursor: pointer;
+            padding: 15px;
+        }
+        footer{
+            background-color: #0d4f3c;
+            position: fixed;
+            left: 0;
+            bottom: 0;
+            height: 50px;
+            width: 100%;
+            color: white;
+            font-size: 18px;
+        }
+
+    </style>
+</head>
+<body>
+    <a onclick="topFunction()" id="myBtn" title="Go to top"><i class='bx bxs-up-arrow-circle' ></i></a>
+    <div class="container mt-5">
+        <a href="/" class="btn btn-info mb-5">Home</a>
+        <div class="text-center">
+            <h1><%= movie.Title %> </h1>
+            <hr>
+         <% if(movie) {%> 
+                <div class="row mb-3">
+                    <div class="col-md-6 mb-5 mb-md-0">
+                        <img src="<%= movie.Poster %> " alt="<%= movie.Title %> " class="img-fluid">
+                    </div>
+                    <div class="col-md-6">
+                        <ul class="list-group">
+                            <li class="list-group-item list-group-item-action active">Name: <%= movie.Title %> </li>
+                            <li class="list-group-item"><b>Year:</b> <%= movie.Year %> </li>
+                            <li class="list-group-item"><b>Genre:</b> <%= movie.Genre %> </li>
+                            <li class="list-group-item"><b>Director:</b> <%= movie.Director %> </li>
+                            <li class="list-group-item"><b>Writer:</b> <%= movie.Writer %> </li>
+                            <li class="list-group-item"><b>Actors:</b> <%= movie.Actors %> </li>
+                            <li class="list-group-item"><b>Rating:</b> <%= movie.imdbRating %> </li>
+                          </ul>
+                    </div>
+                </div>
+            <% }else{ %>
+                <h1>Error</h1>
+            <% } %>
+        </div>
+    </div>
+    <footer class="text-center mt-5">
+        <div class="container">
+            <p>&copy Uthaya KEC</p>
+        </div>
+    </footer>
+</body>
+<script>
+    //Get the button
+    var mybutton = document.getElementById("myBtn");
+    
+    // When the user scrolls down 20px from the top of the document, show the button
+    window.onscroll = function() {scrollFunction()};
+    
+    function scrollFunction() {
+      if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+        mybutton.style.display = "block";
+      } else {
+        mybutton.style.display = "none";
+      }
+    }
+    
+    // When the user clicks on the button, scroll to the top of the document
+    function topFunction() {
+      document.body.scrollTop = 0;
+      document.documentElement.scrollTop = 0;
+    }
+</script>
+</html> 
