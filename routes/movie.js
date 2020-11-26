@@ -1,29 +1,48 @@
 var express = require('express'),
     app = express.Router(),
-    request = require("request");
+    axios = require("axios");
 
 
 //Search Form
 app.get("/", (req, res)=>{
     res.render("search");
 })
-app.get("/results", (req, res)=>{
+
+//list of movies 
+
+app.get("/results", async(req, res)=>{
     var url = "http://www.omdbapi.com/?s=" + req.query.name + "&apikey=71ee4da";
-    request(url, (error, respond, data)=>{
-        if(!error && respond.statusCode == 200){
-            var datas = JSON.parse(data)
-            res.render("results", {datas: datas, name:req.query.name})
+    const response = await axios.get(url)
+    try{
+        if(response.data.Response == 'True'){
+            //console.log(response.data)
+            res.render("results", {datas: response.data, name: req.query.name})
+        }else{
+            res.redirect("/")
         }
-    })
+        
+    }catch(e){
+        //console.log("dfj")
+        res.redirect("/")
+    }
+    
+    
 })
-app.get("/title/:id", (req, res)=>{
+
+// more details
+
+app.get("/title/:id", async(req, res)=>{
     var url = "http://www.omdbapi.com/?i=" + req.params.id + "&apikey=71ee4da";
-    request(url, (error, respond, data)=>{
-        if(!error && respond.statusCode == 200){
-            var datas = JSON.parse(data)
-            res.render("title", {movie: datas, name:req.query.title})
+    const response = await axios.get(url)
+    try{
+        if(response.data){
+            res.render("title", {movie: response.data})
+        }else{
+            res.redirect("/")
         }
-    })
+    }catch(e){
+        res.redirect("/")
+    }
 })
 
 module.exports = app;

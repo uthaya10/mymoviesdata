@@ -44,10 +44,11 @@
                         </div>
                         <div class="col-md-6 mb-5 mb-md-0">
                             <ul class="list-group">
-                                <a class="list-group-item list-group-item-action active" href="/title/<%= movie.imdbID %>"> Name: <%= movie.Title %> </a>
+                                <li class="list-group-item list-group-item-action active"> Name: <%= movie.Title %> </li>
                                 <li class="list-group-item"><b>Year:</b> <%= movie.Year %> </li>
                                 <li class="list-group-item"><b>Genre:</b> <%= movie.Genre %> </li>
                                 <li class="list-group-item"><b>Director:</b> <%= movie.Type %> </li>
+                                <a class="list-group-item list-group-item-dark" href="/title/<%= movie.imdbID %>">More...</a>
                               </ul>
                         </div>
                     </div>
